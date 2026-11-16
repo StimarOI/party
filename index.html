@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#080412">
+  <meta name="color-scheme" content="dark">
+  <title>Двойной ДР — приглашение</title>
+  <meta name="description" content="Два дня за городом, два именинника и один большой дом. Все детали внутри.">
+  <meta property="og:title" content="Двойной ДР — приглашение">
+  <meta property="og:description" content="Два дня за городом, два именинника и один большой дом.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%82%3C/text%3E%3C/svg%3E">
+
+  <!-- Шрифты: Unbounded + Inter (тема 1), Manrope (тема 2), JetBrains Mono (цифры и статусы) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind и Lucide грузятся с defer и не задерживают первый экран -->
+  <script defer src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/lucide@0.453.0/dist/umd/lucide.min.js"></script>
+
+  <style>
+    /* ─────────── Регистрируем цвета градиента, чтобы он плавно перетекал между темами ─────────── */
+    @property --btn-a { syntax: '<color>'; inherits: true; initial-value: #7C3AED; }
+    @property --btn-b { syntax: '<color>'; inherits: true; initial-value: #D946EF; }
+
+    :root {
+      --morph: 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+      --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    /* ─────────── ТЕМА 1 · UV Rave ─────────── */
+    body[data-theme="1"] {
+      --bg-page: #080412;
+      --bg-outer: #040209;
+      --bg-card: rgba(20, 10, 42, 0.74);
+      --bg-inset: rgba(255, 255, 255, 0.055);
+      --bg-sheet: #150B2B;
+      --bg-seg: rgba(17, 8, 36, 0.86);
+      --bg-tile: rgba(217, 70, 239, 0.14);
+      --border-card: rgba(217, 70, 239, 0.32);
+      --border-soft: rgba(205, 170, 255, 0.16);
+      --accent: #D946EF;
+      --accent-secondary: #7C3AED;
+      --accent-tertiary: #06B6D4;
+      --accent-text: #F0ABFC;
+      --glow-color: rgba(217, 70, 239, 0.30);
+      --glow-size: 34px;
+      --card-hi: rgba(255, 255, 255, 0.07);
+      --card-radius: 24px;
+      --radius-sm: 16px;
+      --radius-btn: 16px;
+      --radius-pill: 999px;
+      --radius-seg: 22px;
+      --dot-radius: 6px;
+      --card-blur: 16px;
+      --font-heading: 'Unbounded', 'Inter', system-ui, sans-serif;
+      --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      --h-weight: 700;
+      --h-tracking: -0.01em;
+      --h1-size: clamp(32px, 11vw, 46px);
+      --h2-size: 21px;
+      --h3-size: 16px;
+      --text: #F6EFFF;
+      --text-muted: #BBAAD8;
+      --btn-a: #7C3AED;
+      --btn-b: #D946EF;
+      --btn-text: #FFFFFF;
+      --btn-glow: rgba(217, 70, 239, 0.55);
+      --rave-on: 1;
+      --pattern-opacity: 0.09;
+      --gold-on: 0;
+    }
+
+    /* ─────────── ТЕМА 2 · Dark Gold Keynote ─────────── */
+    body[data-theme="2"] {
+      --bg-page: #09090B;
+      --bg-outer: #050506;
+      --bg-card: #141417;
+      --bg-inset: #1B1B1F;
+      --bg-sheet: #141417;
+      --bg-seg: rgba(20, 20, 23, 0.94);
+      --bg-tile: rgba(212, 175, 55, 0.10);
+      --border-card: rgba(212, 175, 55, 0.28);
+      --border-soft: rgba(255, 255, 255, 0.09);
+      --accent: #D4AF37;
+      --accent-secondary: #F59E0B;
+      --accent-tertiary: #F3E5B5;
+      --accent-text: #E7CB73;
+      --glow-color: rgba(212, 175, 55, 0.10);
+      --glow-size: 0px;
+      --card-hi: rgba(255, 255, 255, 0.05);
+      --card-radius: 12px;
+      --radius-sm: 8px;
+      --radius-btn: 10px;
+      --radius-pill: 6px;
+      --radius-seg: 12px;
+      --dot-radius: 2px;
+      --card-blur: 0px;
+      --font-heading: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      --font-body: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      --h-weight: 800;
+      --h-tracking: -0.035em;
+      --h1-size: clamp(42px, 14.5vw, 62px);
+      --h2-size: 27px;
+      --h3-size: 18px;
+      --text: #F5F2EA;
+      --text-muted: #A6A199;
+      --btn-a: #F0DC9A;
+      --btn-b: #D4AF37;
+      --btn-text: #15110A;
+      --btn-glow: rgba(212, 175, 55, 0.30);
+      --rave-on: 0;
+      --pattern-opacity: 0;
+      --gold-on: 1;
+    }
+
+    /* ─────────── База ─────────── */
+    *, *::before, *::after { box-sizing: border-box; border: 0 solid transparent; }
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; background: #050308; color-scheme: dark; }
+    html.modal-open { overflow: hidden; }
+    body {
+      margin: 0; min-height: 100vh; min-height: 100dvh;
+      font-family: var(--font-body); font-size: 16px; line-height: 1.5;
+      color: var(--text); background-color: var(--bg-outer);
+      -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+      transition: background-color var(--morph), color var(--morph);
+    }
+    h1, h2, h3, h4, p, dl, dd, ol, ul, figure, fieldset { margin: 0; }
+    h1, h2, h3, h4 { font-size: inherit; font-weight: inherit; }
+    ol, ul { list-style: none; padding: 0; }
+    fieldset { padding: 0; min-width: 0; }
+    legend { padding: 0; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; color: inherit; margin: 0; }
+    button { background: none; padding: 0; cursor: pointer; text-align: inherit; -webkit-tap-highlight-color: transparent; }
+    img, svg { display: block; max-width: 100%; }
+    [hidden] { display: none !important; }
+    :focus-visible { outline: 2px solid var(--accent-tertiary); outline-offset: 3px; }
+    ::selection { background: var(--accent); color: var(--btn-text); }
+
+    /* ─────────── Сцена: фон обеих тем живёт в одном слое и перетекает по opacity ─────────── */
+    .scene {
+      position: fixed; top: 0; bottom: 0; left: 50%; z-index: 0;
+      width: 100%; max-width: 28rem; transform: translateX(-50%);
+      overflow: hidden; pointer-events: none;
+      background-color: var(--bg-page);
+      transition: background-color var(--morph), box-shadow var(--morph);
+    }
+    .scene > div { position: absolute; inset: 0; transition: opacity var(--morph); }
+    .scene-rave { opacity: var(--rave-on); }
+    .blob { position: absolute; aspect-ratio: 1; border-radius: 50%; will-change: transform, opacity; animation: breathe 13s ease-in-out infinite alternate; }
+    .blob-1 { width: 135%; top: -24%; left: -48%; background: radial-gradient(circle, rgba(124, 58, 237, 0.72) 0%, rgba(124, 58, 237, 0) 62%); }
+    .blob-2 { width: 120%; top: 30%; right: -58%; background: radial-gradient(circle, rgba(217, 70, 239, 0.46) 0%, rgba(217, 70, 239, 0) 62%); animation-duration: 17s; animation-delay: -6s; }
+    .blob-3 { width: 80%; bottom: -12%; left: -26%; background: radial-gradient(circle, rgba(6, 182, 212, 0.26) 0%, rgba(6, 182, 212, 0) 62%); animation-duration: 21s; animation-delay: -11s; }
+    @keyframes breathe {
+      from { transform: translate3d(0, 0, 0) scale(0.88); opacity: 0.55; }
+      to   { transform: translate3d(5%, 4%, 0) scale(1.14); opacity: 1; }
+    }
+    .scene-pattern { opacity: var(--pattern-opacity); color: #F5D0FE; }
+    .pattern-grid { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .rosette { position: absolute; width: 420px; height: 420px; max-width: none; animation: spin 180s linear infinite; }
+    .rosette-a { top: -110px; right: -170px; }
+    .rosette-b { bottom: -150px; left: -190px; animation-direction: reverse; animation-duration: 240s; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .scene-gold {
+      opacity: var(--gold-on);
+      background:
+        radial-gradient(ellipse 90% 46% at 50% -6%, rgba(212, 175, 55, 0.27), rgba(212, 175, 55, 0.07) 46%, transparent 72%),
+        radial-gradient(ellipse 70% 26% at 50% 106%, rgba(245, 158, 11, 0.07), transparent 70%);
+    }
+    .scene-gold::before { content: ''; position: absolute; top: 0; left: 12%; right: 12%; height: 1px; background: linear-gradient(90deg, transparent, rgba(240, 220, 154, 0.75), transparent); }
+
+    /* Вспышка «смены сцены» в момент переключения именинника */
+    .flash {
+      position: fixed; inset: 0; z-index: 30; pointer-events: none; opacity: 0;
+      background: radial-gradient(circle at var(--fx, 50%) var(--fy, 30%), var(--accent) 0%, transparent 52%);
+      transform-origin: var(--fx, 50%) var(--fy, 30%); mix-blend-mode: screen;
+    }
+    .flash.go { animation: flash 0.85s cubic-bezier(0.22, 1, 0.36, 1); }
+    @keyframes flash {
+      0%   { opacity: 0; transform: scale(0.35); }
+      28%  { opacity: 0.34; }
+      100% { opacity: 0; transform: scale(1.9); }
+    }
+
+    /* ─────────── Каркас ─────────── */
+    .app { z-index: 1; min-height: 100vh; min-height: 100dvh; padding-top: calc(env(safe-area-inset-top, 0px) + 28px); padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 44px); }
+    .app section { scroll-margin-top: 20px; }
+    @media (min-width: 30rem) {
+      .scene { box-shadow: 0 0 0 1px var(--border-soft), 0 0 140px -30px var(--glow-color); }
+    }
+
+    /* ─────────── Типографика ─────────── */
+    .h-font { font-family: var(--font-heading); }
+    .mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+    .muted { color: var(--text-muted); transition: color var(--morph); }
+    .section-title, .sub-title {
+      font-family: var(--font-heading); font-weight: var(--h-weight);
+      letter-spacing: var(--h-tracking); line-height: 1.15;
+      transition: font-size var(--morph), letter-spacing var(--morph);
+    }
+    .section-title { font-size: var(--h2-size); }
+    .sub-title { font-size: var(--h3-size); }
+    .label { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.02em; color: var(--text-muted); transition: color var(--morph); }
+    .stat { font-size: 18px; font-weight: 500; }
+
+    /* ─────────── Карточки ─────────── */
+    .card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: var(--card-radius);
+      box-shadow: inset 0 1px 0 var(--card-hi), 0 0 var(--glow-size) -8px var(--glow-color), 0 22px 44px -30px rgba(0, 0, 0, 0.9);
+      -webkit-backdrop-filter: blur(var(--card-blur)); backdrop-filter: blur(var(--card-blur));
+      transition: background-color var(--morph), border-color var(--morph), border-radius var(--morph), box-shadow var(--morph), -webkit-backdrop-filter var(--morph), backdrop-filter var(--morph);
+    }
+    .inset {
+      background-color: var(--bg-inset); border: 1px solid var(--border-soft); border-radius: var(--radius-sm);
+      transition: background-color var(--morph), border-color var(--morph), border-radius var(--morph);
+    }
+    .icon-tile {
+      display: inline-flex; align-items: center; justify-content: center; flex: none;
+      width: 40px; height: 40px; border-radius: calc(var(--radius-sm) * 0.75);
+      background-color: var(--bg-tile); border: 1px solid var(--border-card); color: var(--accent-text);
+      transition: background-color var(--morph), border-color var(--morph), border-radius var(--morph), color var(--morph);
+    }
+    .chip {
+      display: inline-flex; align-items: center; gap: 6px; flex: none;
+      padding: 5px 10px; border-radius: var(--radius-pill);
+      border: 1px solid var(--border-card); color: var(--accent-text);
+      font-size: 11.5px; line-height: 1.2; white-space: nowrap;
+      transition: border-color var(--morph), border-radius var(--morph), color var(--morph), background-color var(--morph);
+    }
+    .chip.chip-solid { background-color: var(--bg-tile); }
+    i[data-lucide], svg.lucide { display: inline-block; width: 18px; height: 18px; flex: none; stroke-width: 1.75; }
+
+    /* ─────────── Кнопки ─────────── */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      min-height: 52px; padding: 0 18px; border-radius: var(--radius-btn);
+      font-size: 15px; font-weight: 600; line-height: 1.2; text-align: center;
+      user-select: none; -webkit-user-select: none;
+      transition: transform 0.15s ease, opacity 0.2s ease, border-radius var(--morph), background-color var(--morph), border-color var(--morph), color var(--morph), box-shadow var(--morph), --btn-a var(--morph), --btn-b var(--morph);
+    }
+    .btn:active { transform: scale(0.97); }
+    .btn:disabled { opacity: 0.6; cursor: progress; }
+    .btn.btn-primary {
+      background-image: linear-gradient(120deg, var(--btn-a), var(--btn-b));
+      color: var(--btn-text);
+      box-shadow: 0 12px 28px -12px var(--btn-glow), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+    .btn.btn-ghost { background-color: var(--bg-inset); border: 1px solid var(--border-soft); color: var(--text); }
+    .btn.btn-grow { flex: 1 1 150px; }
+    .btn.btn-map { padding: 0 10px; font-size: 14px; }
+    @media (max-width: 359px) { .btn.btn-map i, .btn.btn-map svg { display: none; } }
+    .icon-btn {
+      display: inline-flex; align-items: center; justify-content: center; flex: none;
+      width: 44px; height: 44px; border-radius: var(--radius-btn);
+      background-color: var(--bg-inset); border: 1px solid var(--border-soft); color: var(--text-muted);
+    }
+
+    /* ─────────── Hero ─────────── */
+    .badge {
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 8px 14px; border-radius: var(--radius-pill);
+      background-color: var(--bg-inset); border: 1px solid var(--border-card);
+      font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.02em;
+      transition: background-color var(--morph), border-color var(--morph), border-radius var(--morph);
+    }
+    .badge .dot, .sync-status .dot {
+      width: 6px; height: 6px; border-radius: 50%; flex: none;
+      background-color: var(--accent); box-shadow: 0 0 10px var(--accent);
+      transition: background-color var(--morph), box-shadow var(--morph);
+    }
+    .hero-title { font-family: var(--font-heading); font-weight: var(--h-weight); letter-spacing: var(--h-tracking); line-height: 1.04; }
+    .hero-kicker { display: block; margin-bottom: 12px; font-size: 15px; font-weight: 500; letter-spacing: 0; color: var(--text-muted); transition: color var(--morph); }
+    .hero-name {
+      display: block; max-width: 100%; padding: 2px 0; overflow-wrap: anywhere;
+      font-size: var(--h1-size);
+      background-image: linear-gradient(100deg, var(--btn-a), var(--btn-b));
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent; color: transparent;
+      opacity: 0.42; filter: saturate(0);
+      transition: opacity var(--morph), filter var(--morph), font-size var(--morph), letter-spacing var(--morph), --btn-a var(--morph), --btn-b var(--morph);
+    }
+    .hero-name[aria-pressed="true"] { opacity: 1; filter: none; }
+    .hero-amp { display: block; margin: 2px 0; font-size: calc(var(--h1-size) * 0.46); font-weight: 500; color: var(--accent-text); transition: font-size var(--morph), color var(--morph); }
+    .hero-hint { display: flex; align-items: center; gap: 8px; margin-top: 14px; font-size: 12px; color: var(--text-muted); transition: color var(--morph); }
+    .hero-hint i, .hero-hint svg { width: 15px; height: 15px; }
+    .rise { animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: calc(var(--i, 0) * 90ms + 80ms); }
+    @keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+
+    /* ─────────── Тайминг ─────────── */
+    .tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .tabs .tab {
+      display: flex; flex-direction: column; justify-content: center; gap: 2px;
+      min-height: 60px; padding: 8px 16px; border-radius: var(--radius-btn);
+      background-color: transparent; border: 1px solid var(--border-soft); color: var(--text-muted);
+      transition: background-color var(--morph), border-color var(--morph), border-radius var(--morph), color var(--morph);
+    }
+    .tabs .tab[aria-selected="true"] { background-color: var(--bg-tile); border-color: var(--accent); color: var(--text); }
+    .tab-title { font-weight: 600; font-size: 15px; }
+    .tab-sub { font-size: 12px; }
+    .tl-item { position: relative; display: grid; grid-template-columns: 50px 1fr; column-gap: 28px; padding-bottom: 22px; }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-item::before { content: ''; position: absolute; left: 63.5px; top: 12px; bottom: -6px; width: 1px; background-color: var(--border-card); transition: background-color var(--morph); }
+    .tl-item:last-child::before { display: none; }
+    .tl-dot {
+      position: absolute; left: 58px; top: 6px; width: 12px; height: 12px; border-radius: var(--dot-radius);
+      background-color: var(--bg-page); border: 2px solid var(--accent); box-shadow: 0 0 12px var(--glow-color);
+      transition: background-color var(--morph), border-color var(--morph), border-radius var(--morph), box-shadow var(--morph);
+    }
+    .tl-time { padding-top: 2px; font-size: 13px; text-align: right; color: var(--accent-text); transition: color var(--morph); }
+    .tl-head { display: flex; align-items: center; gap: 8px; font-weight: 600; line-height: 1.3; }
+    .tl-head i, .tl-head svg { color: var(--accent-text); width: 16px; height: 16px; }
+
+    /* ─────────── Памятка ─────────── */
+    .memo-text { font-size: 13px; line-height: 1.45; }
+
+    /* ─────────── Вишлист ─────────── */
+    .seg {
+      position: -webkit-sticky; position: sticky; top: calc(env(safe-area-inset-top, 0px) + 10px); z-index: 20;
+      display: grid; grid-template-columns: 1fr 1fr; padding: 5px;
+      background-color: var(--bg-seg); border: 1px solid var(--border-card); border-radius: var(--radius-seg);
+      -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+      box-shadow: 0 16px 30px -18px #000;
+      transition: background-color var(--morph), border-color var(--morph), border-radius var(--morph);
+    }
+    .seg-thumb {
+      position: absolute; top: 5px; bottom: 5px; left: 5px; width: calc(50% - 5px);
+      border-radius: calc(var(--radius-seg) - 5px);
+      background-image: linear-gradient(120deg, var(--btn-a), var(--btn-b));
+      box-shadow: 0 8px 22px -10px var(--btn-glow), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      transition: transform var(--morph), border-radius var(--morph), box-shadow var(--morph), --btn-a var(--morph), --btn-b var(--morph);
+    }
+    body[data-theme="2"] .seg-thumb { transform: translateX(100%); }
+    .seg .seg-btn {
+      position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+      min-height: 58px; padding: 6px 8px; border-radius: calc(var(--radius-seg) - 5px);
+      color: var(--text-muted); text-align: center; transition: color var(--morph);
+    }
+    .seg .seg-btn[aria-pressed="true"] { color: var(--btn-text); }
+    .seg-name { display: inline-flex; align-items: center; gap: 7px; max-width: 100%; font-size: 15px; font-weight: 700; line-height: 1.2; overflow-wrap: anywhere; }
+    .seg-name i, .seg-name svg { width: 16px; height: 16px; }
+    .seg-cap { font-size: 10.5px; letter-spacing: 0.04em; opacity: 0.85; }
+
+    .card.easy { border-color: var(--accent); }
+    .uid { font-size: clamp(22px, 7.4vw, 30px); font-weight: 700; letter-spacing: 0.04em; line-height: 1.2; overflow-wrap: anywhere; }
+    .uid-key { color: var(--text-muted); font-weight: 400; transition: color var(--morph); }
+    .easy-row { display: flex; align-items: flex-start; gap: 12px; }
+
+    .gift { position: relative; }
+    .gift-meta { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 12px; color: var(--text-muted); transition: color var(--morph); }
+    .gift-status { display: inline-flex; align-items: center; gap: 7px; }
+    .gift-status::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background-color: #34D399; }
+    .gift.is-booked .gift-status::before { background-color: var(--text-muted); }
+    .gift-spec > div { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 10px 0; border-top: 1px solid var(--border-soft); transition: border-color var(--morph); }
+    .gift-spec dt { font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); transition: color var(--morph); }
+    .gift-spec dd { font-family: var(--font-mono); font-size: 13.5px; text-align: right; }
+    .gift-spec a { display: inline-flex; align-items: center; gap: 6px; color: var(--accent-text); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--border-card); }
+    .gift-spec a i, .gift-spec a svg { width: 14px; height: 14px; }
+    .gift.is-booked > .gift-dim { opacity: 0.42; filter: saturate(0.4); }
+    .gift-dim { transition: opacity 0.4s ease, filter 0.4s ease; }
+    .booked-badge {
+      display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; width: 100%;
+      min-height: 52px; padding: 8px 14px; border-radius: var(--radius-btn);
+      border: 1px dashed var(--border-card); color: var(--text-muted);
+      font-size: 14px; font-weight: 600; text-align: center;
+      transition: border-color var(--morph), border-radius var(--morph), color var(--morph);
+    }
+    .booked-undo { font-family: var(--font-mono); font-size: 12px; font-weight: 400; color: var(--accent-text); text-decoration: underline; text-underline-offset: 3px; }
+    .booked-badge.is-armed { border-style: solid; border-color: var(--accent); color: var(--text); }
+    .swap-in { animation: swap 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
+    @keyframes swap { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+    /* ─────────── Подвал ─────────── */
+    .hairline { height: 1px; background: linear-gradient(90deg, var(--border-card), transparent); }
+    .sync-status { display: flex; align-items: center; gap: 9px; font-size: 11.5px; color: var(--text-muted); }
+
+    /* ─────────── Модальные окна (шторка снизу) ─────────── */
+    dialog.sheet {
+      width: 100%; max-width: 28rem; max-height: none; margin: auto auto 0; padding: 0;
+      border: 0; background: transparent; color: var(--text); overflow: visible;
+    }
+    dialog.sheet::backdrop { background: rgba(4, 2, 8, 0.7); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+    .sheet-body {
+      max-height: 92vh; max-height: 92dvh; overflow-y: auto; overscroll-behavior: contain;
+      padding: 22px 20px calc(env(safe-area-inset-bottom, 0px) + 24px);
+      background-color: var(--bg-sheet);
+      border: 1px solid var(--border-card); border-bottom-width: 0;
+      border-radius: var(--card-radius) var(--card-radius) 0 0;
+      box-shadow: 0 -20px 60px -20px var(--glow-color);
+    }
+    dialog.sheet[open] .sheet-body { animation: sheet-up 0.45s cubic-bezier(0.22, 1, 0.36, 1); }
+    @keyframes sheet-up { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: none; } }
+    @media (min-width: 30rem) {
+      dialog.sheet { margin: auto; }
+      .sheet-body { border-bottom-width: 1px; border-radius: var(--card-radius); }
+    }
+    .field {
+      display: block; width: 100%; min-height: 52px; padding: 14px 16px; border-radius: var(--radius-btn);
+      background-color: var(--bg-inset); border: 1px solid var(--border-soft); color: var(--text);
+      font-size: 16px; line-height: 1.4; resize: vertical;
+    }
+    .field::placeholder { color: var(--text-muted); opacity: 0.7; }
+    .field:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--glow-color); }
+    .choice { position: relative; display: block; cursor: pointer; }
+    .choice input { position: absolute; opacity: 0; pointer-events: none; }
+    .choice-card {
+      display: flex; align-items: center; gap: 12px; min-height: 56px; padding: 0 16px;
+      border-radius: var(--radius-btn); background-color: var(--bg-inset); border: 1px solid var(--border-soft);
+      font-weight: 500; transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .choice-card i, .choice-card svg { color: var(--text-muted); }
+    .choice input:checked + .choice-card { border-color: var(--accent); background-color: var(--bg-tile); box-shadow: inset 0 0 0 1px var(--accent); }
+    .choice input:checked + .choice-card i, .choice input:checked + .choice-card svg { color: var(--accent-text); }
+    .choice input:focus-visible + .choice-card { outline: 2px solid var(--accent-tertiary); outline-offset: 3px; }
+    .form-error { font-size: 14px; color: #FDA4AF; }
+    .qr-frame { width: min(260px, 100%); aspect-ratio: 1; padding: 14px; border-radius: var(--radius-sm); background: #FFFFFF; }
+    .qr-frame img { width: 100%; height: 100%; object-fit: contain; }
+    .qr-empty { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; height: 100%; color: #3F3F46; font-size: 14px; text-align: center; border: 1px dashed #A1A1AA; border-radius: 6px; padding: 12px; }
+    .qr-empty i, .qr-empty svg { width: 40px; height: 40px; }
+
+    /* ─────────── Toast ─────────── */
+    .toast {
+      position: fixed; left: 50%; bottom: calc(env(safe-area-inset-bottom, 0px) + 20px); z-index: 60;
+      width: max-content; max-width: min(92vw, 24rem); padding: 12px 18px;
+      border-radius: var(--radius-btn); background-color: var(--bg-sheet); border: 1px solid var(--border-card); color: var(--text);
+      font-size: 14px; font-weight: 500; line-height: 1.35; text-align: center;
+      box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.85), 0 0 26px -8px var(--glow-color);
+      opacity: 0; transform: translate(-50%, 16px); pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .blob, .rosette, .rise, .swap-in, .flash.go, dialog.sheet[open] .sheet-body { animation: none !important; }
+    }
+
+    /* ─────────── Страховка: те же утилиты Tailwind, что используются в разметке.
+       Если CDN Tailwind не загрузится (медленная сеть, блокировки), вёрстка не поедет. ─────────── */
+    .relative{position:relative}.block{display:block}.flex{display:flex}.grid{display:grid}
+    .flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}
+    .items-start{align-items:flex-start}.items-center{align-items:center}
+    .justify-between{justify-content:space-between}
+    .grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .gap-2{gap:.5rem}.gap-3{gap:.75rem}.gap-4{gap:1rem}
+    .w-full{width:100%}.min-w-0{min-width:0}.max-w-md{max-width:28rem}
+    .mx-auto{margin-left:auto;margin-right:auto}
+    .px-5{padding-left:1.25rem;padding-right:1.25rem}.p-4{padding:1rem}.p-5{padding:1.25rem}
+    .mt-1{margin-top:.25rem}.mt-2{margin-top:.5rem}.mt-3{margin-top:.75rem}.mt-4{margin-top:1rem}
+    .mt-5{margin-top:1.25rem}.mt-6{margin-top:1.5rem}.mt-8{margin-top:2rem}.mt-14{margin-top:3.5rem}
+    .text-sm{font-size:.875rem;line-height:1.25rem}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}
+    .font-semibold{font-weight:600}
+    .leading-snug{line-height:1.375}.leading-relaxed{line-height:1.625}
+    .text-center{text-align:center}.break-words{overflow-wrap:break-word}
+    .select-all{-webkit-user-select:all;user-select:all}
+  </style>
+</head>
+
+<body data-theme="1">
+  <script>
+    /* Ставим тему до первой отрисовки, чтобы ссылка ?for=2 сразу открывалась в «золоте» */
+    (function () {
+      try {
+        if (new URLSearchParams(window.location.search).get('for') === '2') document.body.setAttribute('data-theme', '2');
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Фоновая сцена: UV-пятна + сакральная геометрия (тема 1) и золотой прожектор (тема 2) -->
+  <div class="scene" aria-hidden="true">
+    <div class="scene-rave">
+      <span class="blob blob-1"></span><span class="blob blob-2"></span><span class="blob blob-3"></span>
+    </div>
+    <div class="scene-pattern">
+      <svg class="pattern-grid" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="flower" width="56" height="96.995" patternUnits="userSpaceOnUse">
+            <g fill="none" stroke="currentColor" stroke-width="1">
+              <circle cx="0" cy="0" r="56"/><circle cx="56" cy="0" r="56"/>
+              <circle cx="-28" cy="48.497" r="56"/><circle cx="28" cy="48.497" r="56"/><circle cx="84" cy="48.497" r="56"/>
+              <circle cx="0" cy="96.995" r="56"/><circle cx="56" cy="96.995" r="56"/>
+              <circle cx="28" cy="-48.497" r="56"/><circle cx="28" cy="145.492" r="56"/>
+            </g>
+          </pattern>
+          <g id="rosette" fill="none" stroke="currentColor" stroke-width="1.4">
+            <circle r="196"/><circle r="124"/><circle r="66"/>
+            <ellipse rx="196" ry="66"/><ellipse rx="196" ry="66" transform="rotate(15)"/>
+            <ellipse rx="196" ry="66" transform="rotate(30)"/><ellipse rx="196" ry="66" transform="rotate(45)"/>
+            <ellipse rx="196" ry="66" transform="rotate(60)"/><ellipse rx="196" ry="66" transform="rotate(75)"/>
+            <ellipse rx="196" ry="66" transform="rotate(90)"/><ellipse rx="196" ry="66" transform="rotate(105)"/>
+            <ellipse rx="196" ry="66" transform="rotate(120)"/><ellipse rx="196" ry="66" transform="rotate(135)"/>
+            <ellipse rx="196" ry="66" transform="rotate(150)"/><ellipse rx="196" ry="66" transform="rotate(165)"/>
+          </g>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#flower)"/>
+      </svg>
+      <svg class="rosette rosette-a" viewBox="-200 -200 400 400" xmlns="http://www.w3.org/2000/svg"><use href="#rosette"/></svg>
+      <svg class="rosette rosette-b" viewBox="-200 -200 400 400" xmlns="http://www.w3.org/2000/svg"><use href="#rosette"/></svg>
+    </div>
+    <div class="scene-gold"></div>
+  </div>
+  <div class="flash" id="flash" aria-hidden="true"></div>
+
+  <!-- Контент: секции наполняются из PARTY_DATA -->
+  <div class="app relative mx-auto w-full max-w-md px-5">
+    <header id="hero"></header>
+    <main>
+      <section id="location" class="mt-14" aria-labelledby="locationTitle"></section>
+      <section id="schedule" class="mt-14" aria-labelledby="scheduleTitle"></section>
+      <section id="memo" class="mt-14" aria-labelledby="memoTitle"></section>
+      <section id="wishlist" class="mt-14" aria-labelledby="wishlistTitle"></section>
+    </main>
+    <footer id="footer" class="mt-14"></footer>
+  </div>
+
+  <!-- RSVP -->
+  <dialog id="rsvpModal" class="sheet" aria-labelledby="rsvpTitle">
+    <div class="sheet-body">
+      <div class="flex items-start justify-between gap-3">
+        <div class="min-w-0">
+          <h2 id="rsvpTitle" class="section-title">Вы с нами?</h2>
+          <p class="mt-2 text-sm muted leading-snug">Ответ можно поменять в любой момент — просто откройте эту форму ещё раз.</p>
+        </div>
+        <button class="icon-btn" data-action="close-modal" aria-label="Закрыть"><i data-lucide="x" aria-hidden="true"></i></button>
+      </div>
+
+      <form id="rsvpForm" class="mt-5" novalidate>
+        <label class="label" for="rsvpName">Как вас зовут</label>
+        <input class="field mt-2" id="rsvpName" name="name" type="text" autocomplete="name" maxlength="60" placeholder="Имя и фамилия">
+
+        <fieldset class="mt-5">
+          <legend class="label">Ваш ответ</legend>
+          <div class="flex flex-col gap-2 mt-2">
+            <label class="choice"><input type="radio" name="status" value="overnight"><span class="choice-card"><i data-lucide="bed-double" aria-hidden="true"></i><span>Приеду с ночёвкой</span></span></label>
+            <label class="choice"><input type="radio" name="status" value="day"><span class="choice-card"><i data-lucide="sun" aria-hidden="true"></i><span>Без ночёвки</span></span></label>
+            <label class="choice"><input type="radio" name="status" value="no"><span class="choice-card"><i data-lucide="frown" aria-hidden="true"></i><span>Не смогу</span></span></label>
+          </div>
+        </fieldset>
+
+        <label class="label block mt-5" for="rsvpComment">Комментарий, если есть что добавить</label>
+        <textarea class="field mt-2" id="rsvpComment" name="comment" rows="3" maxlength="400" placeholder="Аллергии, «+1», во сколько приедете…"></textarea>
+
+        <p class="form-error mt-3" id="rsvpError" role="alert" hidden></p>
+        <button class="btn btn-primary w-full mt-5" type="submit"><span class="lbl">Отправить ответ</span></button>
+      </form>
+
+      <div id="rsvpDone" class="mt-6" hidden>
+        <span class="icon-tile"><i data-lucide="check" aria-hidden="true"></i></span>
+        <h3 class="sub-title mt-4" id="rsvpDoneTitle"></h3>
+        <p class="mt-2 text-sm muted leading-relaxed" id="rsvpDoneText"></p>
+        <button class="btn btn-primary w-full mt-6" data-action="close-modal">Готово</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- QR-код -->
+  <dialog id="qrModal" class="sheet" aria-labelledby="qrTitle">
+    <div class="sheet-body">
+      <div class="flex items-start justify-between gap-3">
+        <div class="min-w-0">
+          <h2 id="qrTitle" class="section-title">QR-код для перевода</h2>
+          <p class="mt-2 text-sm muted leading-snug" id="qrSub"></p>
+        </div>
+        <button class="icon-btn" data-action="close-modal" aria-label="Закрыть"><i data-lucide="x" aria-hidden="true"></i></button>
+      </div>
+      <div class="qr-frame mx-auto mt-6">
+        <img id="qrImg" alt="QR-код для перевода USDT на BingX">
+        <div id="qrEmpty" class="qr-empty" hidden>
+          <i data-lucide="qr-code" aria-hidden="true"></i>
+          <span>Картинка QR-кода пока не добавлена</span>
+          <span class="mono" id="qrPath" style="font-size:12px"></span>
+        </div>
+      </div>
+      <p class="uid mono select-all text-center mt-5" id="qrUid"></p>
+      <button class="btn btn-primary w-full mt-4" data-action="copy-uid"><i data-lucide="copy" aria-hidden="true"></i><span class="lbl">Скопировать UID</span></button>
+    </div>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <noscript><p style="position:relative;z-index:2;padding:24px;text-align:center">Чтобы открыть приглашение, включите JavaScript в браузере.</p></noscript>
+
+  <script>
+    /* ══════════════════════════════════════════════════════════════════════
+       PARTY_DATA — всё, что нужно менять, собрано здесь. Остальной код можно не трогать.
+       ══════════════════════════════════════════════════════════════════════ */
+    const PARTY_DATA = {
+
+      /* ── Шапка ── */
+      dateBadge: '12–13 декабря',          // даты в бейдже
+      tagline: 'Загородный уикенд',        // вторая половина бейджа
+      greeting: 'Два дня, большой дом за городом, баня, гриль и музыка до ночи. Приезжайте в субботу, оставайтесь до воскресенья — отмечаем сразу два дня рождения.',
+
+      /* ── Именинники ──
+         Ключ 1 → тема UV Rave (ссылка ?for=1), ключ 2 → тема Dark Gold (ссылка ?for=2).
+         id подарка после запуска не меняйте: по нему хранится бронь. */
+      hosts: {
+        1: {
+          name: 'Артём',
+          themeLabel: 'UV Rave',               // подпись темы в переключателе
+          bingxUid: '12345678',                // UID аккаунта BingX
+          qrImage: 'qr-1.png',                 // путь к картинке QR-кода (положите файл рядом с index.html)
+          gifts: [
+            { id: 'h1-earplugs', title: 'Беруши для концертов',
+              text: 'Чтобы стоять у колонки и слышать музыку завтра тоже. Например, Loop Experience.',
+              budget: '≈ 3 500 ₽', link: 'https://www.ozon.ru/search/?text=беруши+для+концертов' },
+            { id: 'h1-speaker', title: 'Портативная колонка',
+              text: 'Небольшая, громкая и не боится дождя — для леса и поездок.',
+              budget: '≈ 9 000 ₽', link: 'https://www.ozon.ru/search/?text=портативная+колонка+влагозащита' },
+            { id: 'h1-uv', title: 'UV-фонарь и флуоресцентные краски',
+              text: 'Набор для светящегося декора и боди-арта на следующую вечеринку.',
+              budget: '≈ 2 500 ₽', link: 'https://www.ozon.ru/search/?text=флуоресцентные+краски+уф+фонарь' },
+            { id: 'h1-hammock', title: 'Туристический гамак',
+              text: 'Лёгкий, с москитной сеткой — готовая чилл-зона на любом фестивале.',
+              budget: '≈ 4 000 ₽', link: '' }   // link можно оставить пустым — строка со ссылкой скроется
+          ]
+        },
+        2: {
+          name: 'Максим',
+          themeLabel: 'Dark Gold',
+          bingxUid: '87654321',
+          qrImage: 'qr-2.png',
+          gifts: [
+            { id: 'h2-keyboard', title: 'Механическая клавиатура',
+              text: 'Компактная, с тихими свитчами. Например, Keychron K2.',
+              budget: '≈ 9 000 ₽', link: 'https://www.ozon.ru/search/?text=keychron+k2' },
+            { id: 'h2-screenbar', title: 'Лампа на монитор',
+              text: 'Скринбар: ровный свет на стол и никаких бликов на экране.',
+              budget: '≈ 5 000 ₽', link: 'https://www.ozon.ru/search/?text=лампа+на+монитор+скринбар' },
+            { id: 'h2-organizer', title: 'Кожаный органайзер для техники',
+              text: 'Для зарядок, кабелей и карт — чтобы всё ездило в одном месте.',
+              budget: '≈ 4 000 ₽', link: 'https://www.ozon.ru/search/?text=органайзер+для+техники+кожаный' },
+            { id: 'h2-mug', title: 'Кружка с подогревом',
+              text: 'Кофе остаётся горячим до конца самого длинного созвона.',
+              budget: '≈ 6 000 ₽', link: 'https://www.ozon.ru/search/?text=кружка+с+подогревом' },
+            { id: 'h2-book', title: 'Книга про технологии и бизнес',
+              text: 'На ваш вкус. Отдельное спасибо за пару слов на форзаце.',
+              budget: '≈ 1 500 ₽', link: '' }
+          ]
+        }
+      },
+
+      /* ── Локация ── */
+      location: {
+        title: 'Коттедж «Сосны», посёлок «Лесное озеро»',
+        address: 'Московская область, Истринский район, деревня Лесная, улица Сосновая, 12',
+        checkIn: 'Сб, 15:00',
+        checkOut: 'Вс, 14:00',
+        note: 'Ворота открываются по звонку. Если заблудились — пишите в чат, встретим.',
+        yandexMapsUrl: '',   // ссылка на точку в Яндекс.Картах; если пусто — откроется поиск по адресу
+        gisUrl: ''           // ссылка на точку в 2ГИС; если пусто — откроется поиск по адресу
+      },
+
+      /* ── Расписание: по вкладке на день. Иконки — названия с lucide.dev/icons ── */
+      schedule: [
+        { tab: 'День 1', day: 'Суббота', items: [
+          { time: '15:00', icon: 'key-round',   title: 'Заезд и расселение', text: 'Занимаем комнаты, осматриваемся, открываем первое.' },
+          { time: '17:00', icon: 'flame',       title: 'Гриль и ужин',       text: 'Мясо и овощи на углях, общий стол и первые тосты за именинников.' },
+          { time: '19:30', icon: 'thermometer', title: 'Баня',               text: 'Парим по очереди. Полотенце и тапочки захватите с собой.' },
+          { time: '22:00', icon: 'music',       title: 'Музыка и настолки',  text: 'В гостиной танцпол, у камина — настолки и разговоры до ночи.' }
+        ] },
+        { tab: 'День 2', day: 'Воскресенье', items: [
+          { time: '11:00', icon: 'coffee',  title: 'Поздний завтрак',       text: 'Сырники, яичница и много кофе. Будильники не ставим.' },
+          { time: '12:30', icon: 'trees',   title: 'Прогулка и торт',       text: 'Дышим лесом, доедаем торт, делаем общее фото.' },
+          { time: '13:30', icon: 'luggage', title: 'Сборы',                 text: 'Собираем вещи и вместе наводим порядок в доме.' },
+          { time: '14:00', icon: 'car',     title: 'Выезд',                 text: 'Сдаём ключи и разъезжаемся по домам.' }
+        ] }
+      ],
+
+      /* ── Памятка гостя: ровно четыре карточки для сетки 2×2 ── */
+      memo: [
+        { icon: 'shirt',    title: 'Дресс-код',          text: 'Удобно и тепло. К вечеру — что-нибудь яркое, по настроению.' },
+        { icon: 'backpack', title: 'Что взять с собой',  text: 'Полотенце, тапочки, купальник для бани и сменную одежду.' },
+        { icon: 'utensils', title: 'Еда и напитки',      text: 'Ужин и завтрак с нас. Любимые напитки привозите свои.' },
+        { icon: 'car',      title: 'Парковка и связь',   text: 'Во дворе шесть мест, остальные у ворот. Wi-Fi в доме есть.' }
+      ],
+
+      /* ── Тексты карточки «Лёгкий и ликвидный подарок» ── */
+      easyGift: {
+        intro: 'Не хочется гадать с выбором? Вот три варианта, которые точно попадут в цель.',
+        usdt: 'Перевод внутри BingX по UID приходит мгновенно и без комиссии сети.',
+        cash: 'Конверт с парой слов от руки — для тех, кто любит вручать подарок лично.',
+        ozon: 'Электронный или бумажный сертификат маркетплейса тоже отлично подойдёт.'
+      },
+
+      /* ── Подвал ── */
+      footerText: 'Остались вопросы — пишите, ответим быстро. До встречи за городом!',
+      contact: { label: 'Написать организаторам', url: 'https://t.me/username' },  // url можно оставить пустым
+
+      /* ── Синхронизация (всё необязательно; с пустыми ключами сайт работает через localStorage) ──
+         JSONBin.io: создайте bin с содержимым {"reservations":{},"rsvp":{}} и вставьте его ID и ключ.
+         Лучше завести отдельный Access Key с правами Read + Update и указать JSONBIN_KEY_HEADER: 'X-Access-Key'.
+         Telegram: токен бота от @BotFather и ID чата, куда слать уведомления.
+         Важно: ключи лежат в коде страницы и видны любому, кто откроет её исходник.
+         Используйте отдельного бота и отдельный bin только под этот праздник. */
+      JSONBIN_BIN_ID: '',
+      JSONBIN_API_KEY: '',
+      JSONBIN_KEY_HEADER: 'X-Master-Key',
+      TELEGRAM_BOT_TOKEN: '',
+      TELEGRAM_CHAT_ID: '',
+
+      /* Префикс для localStorage. Поменяйте, если хотите сбросить локальные брони у всех. */
+      STORAGE_KEY: 'double-bday-2026'
+    };
+
+    /* ══════════════════════════════════════════════════════════════════════
+       Логика страницы
+       ══════════════════════════════════════════════════════════════════════ */
+    (() => {
+      'use strict';
+
+      const D = PARTY_DATA;
+      const $ = (sel, root = document) => root.querySelector(sel);
+      const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+      const ESC = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
+      const esc = (v) => String(v == null ? '' : v).replace(/[&<>"']/g, (c) => ESC[c]);
+      const icon = (name) => `<i data-lucide="${esc(name)}" aria-hidden="true"></i>`;
+      const paintIcons = () => {
+        if (window.lucide && typeof window.lucide.createIcons === 'function') window.lucide.createIcons();
+      };
+      const STATUS_LABELS = { overnight: 'Приеду с ночёвкой', day: 'Без ночёвки', no: 'Не смогу' };
+
+      /* ── Хранилище: localStorage с запасным вариантом в памяти ── */
+      const NS = (D.STORAGE_KEY || 'party') + ':';
+      const memory = {};
+      const store = {
+        get(key, fallback) {
+          try {
+            const raw = window.localStorage.getItem(NS + key);
+            if (raw != null) return JSON.parse(raw);
+          } catch (e) {}
+          return key in memory ? memory[key] : fallback;
+        },
+        set(key, value) {
+          memory[key] = value;
+          try { window.localStorage.setItem(NS + key, JSON.stringify(value)); } catch (e) {}
+        }
+      };
+
+      /* У каждого телефона свой случайный ID: по нему понятно, чью бронь можно отменить */
+      let deviceId = store.get('device', '');
+      if (!deviceId) {
+        deviceId = 'd' + Math.random().toString(36).slice(2, 10) + Date.now().toString(36);
+        store.set('device', deviceId);
+      }
+
+      const state = {
+        host: 1,
+        day: 0,
+        reservations: store.get('reservations', {}) || {},
+        rsvp: store.get('rsvp', null)
+      };
+
+      /* ── Облако: JSONBin.io ── */
+      const isObject = (v) => v && typeof v === 'object' && !Array.isArray(v);
+      const cloud = {
+        on: Boolean(D.JSONBIN_BIN_ID && D.JSONBIN_API_KEY),
+        url: 'https://api.jsonbin.io/v3/b/' + D.JSONBIN_BIN_ID,
+        headers(extra) {
+          return Object.assign({ [D.JSONBIN_KEY_HEADER || 'X-Master-Key']: D.JSONBIN_API_KEY }, extra);
+        },
+        normalize(json) {
+          const rec = isObject(json) && isObject(json.record) ? json.record : (isObject(json) ? json : {});
+          return {
+            reservations: isObject(rec.reservations) ? rec.reservations : {},
+            rsvp: isObject(rec.rsvp) ? rec.rsvp : {}
+          };
+        },
+        async pull() {
+          const res = await fetch(this.url + '/latest', { headers: this.headers({ 'X-Bin-Meta': 'false' }), cache: 'no-store' });
+          if (!res.ok) throw new Error('JSONBin: ' + res.status);
+          return this.normalize(await res.json());
+        },
+        async push(record) {
+          const res = await fetch(this.url, {
+            method: 'PUT',
+            headers: this.headers({ 'Content-Type': 'application/json' }),
+            body: JSON.stringify(record)
+          });
+          if (!res.ok) throw new Error('JSONBin: ' + res.status);
+        }
+      };
+
+      let lastSync = 0;
+      async function syncFromCloud() {
+        if (!cloud.on || Date.now() - lastSync < 15000) return;
+        lastSync = Date.now();
+        try {
+          const rec = await cloud.pull();
+          state.reservations = rec.reservations;
+          store.set('reservations', state.reservations);
+          renderWishBody(false);
+        } catch (err) {
+          console.warn('Не удалось получить брони из облака:', err);
+        }
+      }
+
+      /* ── Тихое уведомление в Telegram ── */
+      const telegramOn = Boolean(D.TELEGRAM_BOT_TOKEN && D.TELEGRAM_CHAT_ID);
+      function notify(text) {
+        if (!telegramOn) return;
+        fetch('https://api.telegram.org/bot' + D.TELEGRAM_BOT_TOKEN + '/sendMessage', {
+          method: 'POST',
+          body: new URLSearchParams({ chat_id: D.TELEGRAM_CHAT_ID, text: text, disable_web_page_preview: 'true' }),
+          keepalive: true
+        }).catch(() => {});
+      }
+
+      /* ── Мелкие помощники интерфейса ── */
+      let toastTimer;
+      function toast(message) {
+        const el = $('#toast');
+        (document.querySelector('dialog[open]') || document.body).appendChild(el);
+        el.textContent = message;
+        void el.offsetWidth;
+        el.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => el.classList.remove('show'), 2600);
+      }
+
+      async function copyText(text) {
+        try {
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+            return true;
+          }
+        } catch (e) {}
+        try {
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          ta.setAttribute('readonly', '');
+          ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0';
+          (document.querySelector('dialog[open]') || document.body).appendChild(ta);
+          ta.select();
+          ta.setSelectionRange(0, text.length);
+          const ok = document.execCommand('copy');
+          ta.remove();
+          return ok;
+        } catch (e) {
+          return false;
+        }
+      }
+
+      /* На пару секунд меняем подпись кнопки, потом возвращаем прежнюю */
+      function swapLabel(btn, text, ms = 2000) {
+        const lbl = $('.lbl', btn);
+        if (!lbl) return;
+        if (!btn.dataset.label) btn.dataset.label = lbl.textContent;
+        lbl.textContent = text;
+        clearTimeout(btn._labelTimer);
+        btn._labelTimer = setTimeout(() => { lbl.textContent = btn.dataset.label; }, ms);
+      }
+
+      function findGift(id) {
+        for (const hostId of [1, 2]) {
+          const gift = D.hosts[hostId].gifts.find((g) => g.id === id);
+          if (gift) return { gift, host: D.hosts[hostId] };
+        }
+        return null;
+      }
+
+      const uidHtml = (host) => `<span class="uid-key">UID:</span> ${esc(host.bingxUid)}`;
+
+      /* ── Отрисовка секций ── */
+      function renderHero() {
+        const a = D.hosts[1], b = D.hosts[2];
+        document.title = `Двойной ДР: ${a.name} & ${b.name}`;
+        $('#hero').innerHTML = `
+          <div class="badge rise" style="--i:0"><span class="dot"></span><span>${esc(D.dateBadge)} • ${esc(D.tagline)}</span></div>
+          <h1 class="hero-title mt-6 rise" style="--i:1">
+            <span class="hero-kicker">Двойной ДР:</span>
+            <button class="hero-name" data-action="host" data-host="1" aria-pressed="false">${esc(a.name)}</button>
+            <span class="hero-amp">&amp;</span>
+            <button class="hero-name" data-action="host" data-host="2" aria-pressed="false">${esc(b.name)}</button>
+          </h1>
+          <p class="hero-hint mono rise" style="--i:2">${icon('mouse-pointer-click')}<span>нажмите на имя — сменится сцена</span></p>
+          <p class="mt-6 text-base leading-relaxed muted rise" style="--i:3">${esc(D.greeting)}</p>
+          <div class="flex flex-col gap-3 mt-8 rise" style="--i:4">
+            <button class="btn btn-primary w-full" id="rsvpBtn" data-action="open-rsvp"><span class="lbl">Подтвердить участие (RSVP)</span></button>
+            <a class="btn btn-ghost w-full" href="#wishlist">К вишлистам ↓</a>
+          </div>`;
+      }
+
+      function renderLocation() {
+        const L = D.location;
+        const q = encodeURIComponent(L.address);
+        const yandex = L.yandexMapsUrl || 'https://yandex.ru/maps/?text=' + q;
+        const gis = L.gisUrl || 'https://2gis.ru/search/' + q;
+        $('#location').innerHTML = `
+          <h2 class="section-title" id="locationTitle">Локация и логистика</h2>
+          <div class="card p-5 mt-5">
+            <div class="flex items-start gap-3">
+              <span class="icon-tile">${icon('map-pin')}</span>
+              <div class="min-w-0">
+                <h3 class="text-lg font-semibold leading-snug">${esc(L.title)}</h3>
+                <p class="mt-1 text-sm muted leading-snug break-words">${esc(L.address)}</p>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-3 mt-5">
+              <div class="inset p-4"><p class="label">Заезд</p><p class="mono stat mt-1">${esc(L.checkIn)}</p></div>
+              <div class="inset p-4"><p class="label">Выезд</p><p class="mono stat mt-1">${esc(L.checkOut)}</p></div>
+            </div>
+            ${L.note ? `<p class="mt-4 text-sm muted leading-snug">${esc(L.note)}</p>` : ''}
+            <button class="btn btn-primary w-full mt-5" data-action="copy-address">${icon('copy')}<span class="lbl">Скопировать адрес</span></button>
+            <div class="grid grid-cols-2 gap-3 mt-3">
+              <a class="btn btn-ghost btn-map" href="${esc(yandex)}" target="_blank" rel="noopener">${icon('navigation')}<span>Яндекс.Карты</span></a>
+              <a class="btn btn-ghost btn-map" href="${esc(gis)}" target="_blank" rel="noopener">${icon('map')}<span>2ГИС</span></a>
+            </div>
+          </div>`;
+      }
+
+      function renderSchedule() {
+        $('#schedule').innerHTML = `
+          <h2 class="section-title" id="scheduleTitle">Тайминг выходных</h2>
+          <div class="tabs mt-5" role="tablist" aria-label="День">
+            ${D.schedule.map((d, i) => `
+              <button class="tab" role="tab" id="dayTab${i}" aria-controls="dayPanel" aria-selected="false" data-action="day" data-day="${i}">
+                <span class="tab-title">${esc(d.tab)}</span><span class="tab-sub mono">${esc(d.day)}</span>
+              </button>`).join('')}
+          </div>
+          <div class="card p-5 mt-3" id="dayPanel" role="tabpanel"></div>`;
+        renderDay();
+      }
+
+      function renderDay() {
+        const day = D.schedule[state.day] || D.schedule[0];
+        $$('#schedule .tab').forEach((tab, i) => tab.setAttribute('aria-selected', String(i === state.day)));
+        const panel = $('#dayPanel');
+        panel.setAttribute('aria-labelledby', 'dayTab' + state.day);
+        panel.innerHTML = `
+          <ol class="swap-in">
+            ${day.items.map((it) => `
+              <li class="tl-item">
+                <span class="tl-time mono">${esc(it.time)}</span>
+                <span class="tl-dot" aria-hidden="true"></span>
+                <div class="min-w-0">
+                  <h3 class="tl-head">${icon(it.icon)}<span>${esc(it.title)}</span></h3>
+                  <p class="mt-1 text-sm muted leading-snug">${esc(it.text)}</p>
+                </div>
+              </li>`).join('')}
+          </ol>`;
+        paintIcons();
+      }
+
+      function renderMemo() {
+        $('#memo').innerHTML = `
+          <h2 class="section-title" id="memoTitle">Памятка гостя</h2>
+          <div class="grid grid-cols-2 gap-3 mt-5">
+            ${D.memo.map((m) => `
+              <article class="card p-4">
+                <span class="icon-tile">${icon(m.icon)}</span>
+                <h3 class="mt-3 text-sm font-semibold leading-snug">${esc(m.title)}</h3>
+                <p class="mt-1 memo-text muted">${esc(m.text)}</p>
+              </article>`).join('')}
+          </div>`;
+      }
+
+      function renderWishlist() {
+        $('#wishlist').innerHTML = `
+          <h2 class="section-title" id="wishlistTitle">Парный вишлист</h2>
+          <p class="mt-3 text-sm muted leading-relaxed">Главный подарок — ваш приезд. А если хочется порадовать ещё чем-то, вот подсказки. У каждого именинника свой список.</p>
+          <div class="seg mt-5" role="group" aria-label="Чей вишлист показать">
+            <span class="seg-thumb" aria-hidden="true"></span>
+            ${[1, 2].map((n) => `
+              <button class="seg-btn" data-action="host" data-host="${n}" aria-pressed="false">
+                <span class="seg-name h-font">${icon(n === 1 ? 'audio-waveform' : 'gem')}<span>${esc(D.hosts[n].name)}</span></span>
+                <span class="seg-cap mono">${esc(D.hosts[n].themeLabel)}</span>
+              </button>`).join('')}
+          </div>
+          <div id="wishBody" class="mt-5"></div>`;
+      }
+
+      function easyCard(host) {
+        const E = D.easyGift;
+        return `
+          <article class="card easy p-5">
+            <div class="flex items-center justify-between gap-3">
+              <span class="chip chip-solid mono">Проще всего</span>
+              <span class="mono muted" style="font-size:12px">получатель: ${esc(host.name)}</span>
+            </div>
+            <h3 class="sub-title mt-4">Лёгкий и ликвидный подарок</h3>
+            <p class="mt-2 text-sm muted leading-relaxed">${esc(E.intro)}</p>
+
+            <div class="inset p-4 mt-5">
+              <div class="flex items-center justify-between gap-2 flex-wrap">
+                <h4 class="tl-head">${icon('coins')}<span>USDT на BingX</span></h4>
+                <span class="chip mono">без комиссии</span>
+              </div>
+              <p class="mt-2 text-sm muted leading-snug">${esc(E.usdt)}</p>
+              <p class="uid mono select-all mt-4">${uidHtml(host)}</p>
+              <div class="flex flex-wrap gap-3 mt-4">
+                <button class="btn btn-primary btn-grow" data-action="copy-uid">${icon('copy')}<span class="lbl">Скопировать UID</span></button>
+                <button class="btn btn-ghost btn-grow" data-action="show-qr">${icon('qr-code')}<span>Показать QR-код</span></button>
+              </div>
+            </div>
+
+            <div class="easy-row mt-5">
+              <span class="icon-tile">${icon('mail')}</span>
+              <div class="min-w-0"><h4 class="font-semibold leading-snug">Наличные в конверте</h4><p class="mt-1 text-sm muted leading-snug">${esc(E.cash)}</p></div>
+            </div>
+            <div class="easy-row mt-4">
+              <span class="icon-tile">${icon('ticket')}</span>
+              <div class="min-w-0"><h4 class="font-semibold leading-snug">Сертификат Ozon</h4><p class="mt-1 text-sm muted leading-snug">${esc(E.ozon)}</p></div>
+            </div>
+          </article>`;
+      }
+
+      function giftCard(gift, index, all) {
+        const res = state.reservations[gift.id];
+        const booked = Boolean(res);
+        const mine = booked && res.by === deviceId;
+        const num = String(index + 1).padStart(2, '0') + ' / ' + String(all.length).padStart(2, '0');
+        let action;
+        if (!booked) {
+          action = `<button class="btn btn-primary w-full" data-action="reserve" data-gift="${esc(gift.id)}">${icon('gift')}<span class="lbl">Забронировать подарок</span></button>`;
+        } else if (mine) {
+          action = `<button class="booked-badge" data-action="unreserve" data-gift="${esc(gift.id)}">${icon('check')}<span class="lbl">Уже забронировано</span><span class="booked-undo">это вы · отменить</span></button>`;
+        } else {
+          action = `<div class="booked-badge">${icon('lock')}<span>Уже забронировано</span></div>`;
+        }
+        return `
+          <article class="card gift p-5 ${booked ? 'is-booked' : ''}">
+            <div class="gift-dim">
+              <div class="gift-meta mono"><span>${num}</span><span class="gift-status">${booked ? 'забронирован' : 'свободен'}</span></div>
+              <h4 class="sub-title mt-3">${esc(gift.title)}</h4>
+              <p class="mt-2 text-sm muted leading-snug">${esc(gift.text)}</p>
+              <dl class="gift-spec mt-4">
+                <div><dt>Бюджет</dt><dd>${esc(gift.budget)}</dd></div>
+                ${gift.link ? `<div><dt>Пример</dt><dd><a href="${esc(gift.link)}" target="_blank" rel="noopener">посмотреть${icon('external-link')}</a></dd></div>` : ''}
+              </dl>
+            </div>
+            <div class="mt-2">${action}</div>
+          </article>`;
+      }
+
+      function renderWishBody(animate = true) {
+        const body = $('#wishBody');
+        if (!body) return;
+        const host = D.hosts[state.host];
+        const free = host.gifts.filter((g) => !state.reservations[g.id]).length;
+        body.innerHTML = `
+          <div class="flex flex-col gap-4 ${animate ? 'swap-in' : ''}">
+            ${easyCard(host)}
+            <div class="flex items-center justify-between gap-3 mt-4">
+              <h3 class="sub-title">Конкретные идеи</h3>
+              <span class="chip mono">свободно ${free} из ${host.gifts.length}</span>
+            </div>
+            ${host.gifts.map(giftCard).join('')}
+          </div>`;
+        paintIcons();
+      }
+
+      function renderFooter() {
+        const c = D.contact || {};
+        $('#footer').innerHTML = `
+          <div class="hairline"></div>
+          <p class="mt-6 text-sm muted leading-relaxed">${esc(D.footerText)}</p>
+          ${c.url ? `<a class="btn btn-ghost w-full mt-4" href="${esc(c.url)}" target="_blank" rel="noopener">${icon('send')}<span>${esc(c.label || 'Написать организаторам')}</span></a>` : ''}
+          <p class="sync-status mono mt-6"><span class="dot"></span><span>${cloud.on ? 'брони обновляются на всех телефонах' : 'локальный режим: брони видны только на этом устройстве'}</span></p>`;
+      }
+
+      /* ── Смена именинника = смена сцены ── */
+      let booted = false;
+      function setHost(value, ev) {
+        const next = Number(value) === 2 ? 2 : 1;
+        const changed = next !== state.host;
+        state.host = next;
+        document.body.setAttribute('data-theme', String(next));
+        const meta = $('meta[name="theme-color"]');
+        if (meta) meta.setAttribute('content', next === 1 ? '#080412' : '#09090B');
+        $$('[data-action="host"]').forEach((btn) => btn.setAttribute('aria-pressed', String(Number(btn.dataset.host) === next)));
+        if (!booted || changed) renderWishBody(booted);
+        if (!booted || !changed) return;
+
+        const flash = $('#flash');
+        if (ev && typeof ev.clientX === 'number' && (ev.clientX || ev.clientY)) {
+          flash.style.setProperty('--fx', ev.clientX + 'px');
+          flash.style.setProperty('--fy', ev.clientY + 'px');
+        }
+        flash.classList.remove('go');
+        void flash.offsetWidth;
+        flash.classList.add('go');
+
+        try {
+          const url = new URL(window.location.href);
+          url.searchParams.set('for', String(next));
+          window.history.replaceState(null, '', url);
+        } catch (e) {}
+      }
+
+      /* ── Бронь подарка ── */
+      async function setReservation(giftId, want, btn) {
+        const found = findGift(giftId);
+        if (!found) return;
+        if (btn) btn.disabled = true;
+        let conflict = false;
+        try {
+          if (cloud.on) {
+            const rec = await cloud.pull();
+            const current = rec.reservations[giftId];
+            let dirty = false;
+            if (want) {
+              if (current && current.by !== deviceId) conflict = true;
+              else { rec.reservations[giftId] = { by: deviceId, at: Date.now() }; dirty = true; }
+            } else if (current && current.by === deviceId) {
+              delete rec.reservations[giftId];
+              dirty = true;
+            }
+            if (dirty) await cloud.push(rec);
+            state.reservations = rec.reservations;
+          } else if (want) {
+            state.reservations[giftId] = { by: deviceId, at: Date.now() };
+          } else {
+            delete state.reservations[giftId];
+          }
+          store.set('reservations', state.reservations);
+          renderWishBody(false);
+
+          if (conflict) {
+            toast('Этот подарок только что забронировал другой гость');
+            return;
+          }
+          toast(want ? 'Подарок забронирован за вами. Спасибо!' : 'Бронь отменена — подарок снова свободен');
+          const guest = state.rsvp && state.rsvp.name ? state.rsvp.name : 'гость не представился';
+          notify((want ? '🎁 Подарок забронирован' : '↩️ Бронь отменена') +
+            '\nКому: ' + found.host.name + '\nЧто: ' + found.gift.title + '\nКто: ' + guest);
+        } catch (err) {
+          console.warn(err);
+          if (btn) btn.disabled = false;
+          toast('Нет связи с сервером — бронь не сохранилась. Попробуйте ещё раз');
+        }
+      }
+
+      /* ── Модальные окна ── */
+      function openModal(dialog) {
+        if (typeof dialog.showModal === 'function') dialog.showModal();
+        else dialog.setAttribute('open', '');
+        document.documentElement.classList.add('modal-open');
+      }
+      function closeModal(dialog) {
+        if (!dialog) return;
+        if (typeof dialog.close === 'function') dialog.close();
+        else dialog.removeAttribute('open');
+        document.documentElement.classList.remove('modal-open');
+      }
+      $$('dialog').forEach((dialog) => dialog.addEventListener('close', () => {
+        document.documentElement.classList.remove('modal-open');
+        document.body.appendChild($('#toast'));
+      }));
+
+      function openQr() {
+        const host = D.hosts[state.host];
+        const img = $('#qrImg'), empty = $('#qrEmpty');
+        const showEmpty = () => {
+          img.hidden = true;
+          empty.hidden = false;
+          $('#qrPath').textContent = host.qrImage ? 'файл: ' + host.qrImage : 'путь не указан в PARTY_DATA';
+        };
+        $('#qrSub').textContent = 'USDT на BingX · получатель: ' + host.name;
+        $('#qrUid').innerHTML = uidHtml(host);
+        img.hidden = false;
+        empty.hidden = true;
+        img.onerror = showEmpty;
+        if (host.qrImage) img.src = host.qrImage; else showEmpty();
+        openModal($('#qrModal'));
+      }
+
+      /* ── RSVP ── */
+      const rsvpForm = $('#rsvpForm');
+      function updateRsvpButton() {
+        const lbl = $('#rsvpBtn .lbl');
+        if (lbl) lbl.textContent = state.rsvp ? 'Ответ отправлен ✓ Изменить' : 'Подтвердить участие (RSVP)';
+      }
+      function openRsvp() {
+        rsvpForm.hidden = false;
+        $('#rsvpDone').hidden = true;
+        $('#rsvpError').hidden = true;
+        if (state.rsvp) {
+          rsvpForm.elements.name.value = state.rsvp.name || '';
+          rsvpForm.elements.comment.value = state.rsvp.comment || '';
+          const radio = $(`input[name="status"][value="${state.rsvp.status}"]`, rsvpForm);
+          if (radio) radio.checked = true;
+        }
+        openModal($('#rsvpModal'));
+      }
+      function showRsvpError(message) {
+        const el = $('#rsvpError');
+        el.textContent = message;
+        el.hidden = false;
+      }
+
+      rsvpForm.addEventListener('input', () => { $('#rsvpError').hidden = true; });
+
+      rsvpForm.addEventListener('submit', async (ev) => {
+        ev.preventDefault();
+        const data = new FormData(rsvpForm);
+        const name = String(data.get('name') || '').trim();
+        const status = String(data.get('status') || '');
+        const comment = String(data.get('comment') || '').trim();
+        if (!name) { showRsvpError('Напишите, как вас зовут, — иначе мы не поймём, от кого ответ.'); rsvpForm.elements.name.focus(); return; }
+        if (!STATUS_LABELS[status]) { showRsvpError('Выберите один из трёх вариантов ответа.'); return; }
+        $('#rsvpError').hidden = true;
+
+        const submit = $('button[type="submit"]', rsvpForm);
+        const lbl = $('.lbl', submit);
+        submit.disabled = true;
+        lbl.textContent = 'Отправляем…';
+
+        const entry = { name, status, comment, at: Date.now() };
+        let cloudFailed = false;
+        if (cloud.on) {
+          try {
+            const rec = await cloud.pull();
+            rec.rsvp[deviceId] = entry;
+            await cloud.push(rec);
+          } catch (err) {
+            console.warn(err);
+            cloudFailed = true;
+          }
+        }
+        submit.disabled = false;
+        lbl.textContent = 'Отправить ответ';
+
+        if (cloudFailed && !telegramOn) {
+          showRsvpError('Ответ не отправился: нет связи с сервером. Проверьте интернет и нажмите «Отправить ответ» ещё раз.');
+          return;
+        }
+
+        state.rsvp = entry;
+        store.set('rsvp', entry);
+        updateRsvpButton();
+        notify('✅ Ответ на приглашение\nИмя: ' + name + '\nОтвет: ' + STATUS_LABELS[status] + (comment ? '\nКомментарий: ' + comment : ''));
+
+        const done = {
+          overnight: ['Ждём вас с ночёвкой!', 'Спальное место за вами. Ближе к дате напомним про заезд.'],
+          day: ['Ждём вас в гости!', 'Записали: приедете без ночёвки. Если передумаете и останетесь — просто обновите ответ.'],
+          no: ['Жаль, будем скучать', 'Спасибо, что предупредили. Если планы поменяются — обновите ответ, место найдётся.']
+        }[status];
+        $('#rsvpDoneTitle').textContent = done[0];
+        $('#rsvpDoneText').textContent = done[1];
+        rsvpForm.hidden = true;
+        $('#rsvpDone').hidden = false;
+      });
+
+      /* ── Все клики по кнопкам с data-action ── */
+      const actions = {
+        host(el, ev) { setHost(el.dataset.host, ev); },
+        day(el) { state.day = Number(el.dataset.day) || 0; renderDay(); },
+        async 'copy-address'(el) {
+          const ok = await copyText(D.location.address);
+          if (ok) swapLabel(el, 'Скопировано! ✓');
+          toast(ok ? 'Адрес скопирован — вставляйте в навигатор' : 'Не получилось скопировать. Выделите адрес вручную');
+        },
+        async 'copy-uid'(el) {
+          const ok = await copyText(String(D.hosts[state.host].bingxUid));
+          if (ok) swapLabel(el, 'Скопировано! ✓');
+          toast(ok ? 'UID скопирован' : 'Не получилось скопировать. Выделите UID вручную');
+        },
+        'show-qr'() { openQr(); },
+        'open-rsvp'() { openRsvp(); },
+        'close-modal'(el) { closeModal(el.closest('dialog')); },
+        reserve(el) { setReservation(el.dataset.gift, true, el); },
+        unreserve(el) {
+          /* Отмена в два касания, чтобы не снять бронь случайно */
+          if (el.dataset.armed) { setReservation(el.dataset.gift, false, el); return; }
+          el.dataset.armed = '1';
+          el.classList.add('is-armed');
+          $('.lbl', el).textContent = 'Отменить бронь?';
+          $('.booked-undo', el).textContent = 'нажмите ещё раз';
+          setTimeout(() => {
+            if (!el.isConnected) return;
+            delete el.dataset.armed;
+            el.classList.remove('is-armed');
+            $('.lbl', el).textContent = 'Уже забронировано';
+            $('.booked-undo', el).textContent = 'это вы · отменить';
+          }, 3500);
+        }
+      };
+
+      document.addEventListener('click', (ev) => {
+        const target = ev.target;
+        if (!(target instanceof Element)) return;
+        const el = target.closest('[data-action]');
+        if (el) {
+          const fn = actions[el.dataset.action];
+          if (fn) fn(el, ev);
+          return;
+        }
+        if (target.matches('dialog.sheet')) closeModal(target);   // клик по затемнению
+      });
+
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') syncFromCloud();
+      });
+
+      /* ── Старт ── */
+      const forParam = new URLSearchParams(window.location.search).get('for');
+      renderHero();
+      renderLocation();
+      renderSchedule();
+      renderMemo();
+      renderWishlist();
+      renderFooter();
+      setHost(forParam === '2' ? 2 : 1);
+      booted = true;
+      updateRsvpButton();
+      paintIcons();
+      document.addEventListener('DOMContentLoaded', paintIcons);
+      window.addEventListener('load', paintIcons);
+      syncFromCloud();
+    })();
+  </script>
+</body>
+</html>
